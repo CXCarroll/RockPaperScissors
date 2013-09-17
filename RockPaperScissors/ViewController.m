@@ -8,6 +8,7 @@
 
 #import "ViewController.h"
 #import "Judge.h"
+#import "ComputerHand.h"
 
 @interface ViewController ()
 {
@@ -74,10 +75,15 @@
     count--;
     [self updateCount];
     
+    ComputerHand *computerChoice = [[ComputerHand alloc] init];
+    
     if (count == 0) {
         [timer invalidate];
         count = 4;
-        computerHandLabel.text = [choices objectAtIndex:arc4random() % 3];
+        //computerHandLabel.text = [choices objectAtIndex:arc4random() % 3];
+        computerHandLabel.text = [computerChoice computerChoice];
+        
+        
     }
 [self showWinner];
 }
