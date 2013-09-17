@@ -7,6 +7,7 @@
 //
 
 #import "ViewController.h"
+#import "Judge.h"
 
 @interface ViewController ()
 {
@@ -30,14 +31,17 @@
 -(void)showWinner
 {
     BOOL computerWon;
+    Judge *result = [[Judge alloc] init]; 
     
-    computerWon = YES;// replace the YES with a call to your custom Judge class
+    computerWon = [result didComputerWin:computerHandLabel.text user:playerHandLabel.text];
     
     if (computerWon) {
         computerHandLabel.backgroundColor = [UIColor greenColor];
+        playerHandLabel.backgroundColor = [UIColor whiteColor];
     }
     else{
         playerHandLabel.backgroundColor = [UIColor greenColor];
+        computerHandLabel.backgroundColor = [UIColor whiteColor];
     }
 }
 
@@ -75,6 +79,7 @@
         count = 4;
         computerHandLabel.text = [choices objectAtIndex:arc4random() % 3];
     }
+[self showWinner];
 }
 
 
